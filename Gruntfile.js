@@ -154,7 +154,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-htmlmin')
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -169,5 +169,11 @@ module.exports = function(grunt) {
 		'cssmin',
 		'uglify',
 		'htmlmin'
+	]);
+
+	// grunt update dev files. just like grunt watch, but manually update
+	grunt.registerTask('default', [
+		'less:all',
+		'autoprefixer:all'
 	]);
 };
