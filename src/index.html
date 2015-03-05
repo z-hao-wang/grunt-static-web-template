@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<link href="css/main.css" media="all" rel="stylesheet" type="text/css" />
+	<title>Website Title</title>
+</head>
+<body>
+<header id="headerContainer">
+	<div id="header">
+		<h1>A Template</h1>
+	</div>
+</header>
+<section id="mainContainer">
+	<section id="main" class="center-container">
+		<table id="mainTable" class="center-container">
+		</table>
+	</section>
+</section>
+<footer id="info">
+All Rights Reserved
+</footer>
+
+<script type="text/template" id="item-template">
+	<td><%- name %></td>
+</script>
+
+<script src="scripts/libs/zepto.min.js"></script>
+<script src="scripts/libs/underscore-min.js"></script>
+<script src="scripts/libs/backbone-min.js"></script>
+<script src="scripts/models/item.js"></script>
+<script src="scripts/collections/items.js"></script>
+<script src="scripts/views/item-view.js"></script>
+<script src="scripts/views/app-view.js"></script>
+<script src="scripts/routers/router.js"></script>
+<script src="scripts/app.js"></script>
+
+</body>
+</html>
