@@ -8,8 +8,3 @@ grunt build
 grunt watch
 ```
 run http://xxxxx/index.html
-To build release version:
-
-```
-grunt build
-```
