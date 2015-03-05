@@ -84,6 +84,46 @@ module.exports = function(grunt) {
 			}
 
 		},
+		//Minimized CSS
+		cssmin: {
+			build: {
+				files: [{
+					expand: true,
+					cwd: 'build/css/',
+					src: '*.css',
+					dest: 'build/css/'
+				}]
+			}
+		},
+		uglify: {
+			build: {
+				options: {
+					banner: '/*! grunt-created */\n',
+					beautify: {
+						beautify: false,
+						max_line_len: 140
+					}
+				},
+				files: [{
+					src: 'build/compressed.js',
+					dest: 'build/compressed.js'
+				}]
+			}
+		},
+		htmlmin: {
+			build: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true
+				},
+				files: [{
+					expand: true,
+					cwd: 'build/',
+					src: '*.html',
+					dest: 'build/'
+				}]
+			}
+		},
 		watch: {
 			options: {
 				dateFormat: function (time) {
@@ -113,6 +153,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin')
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -123,6 +165,9 @@ module.exports = function(grunt) {
 		'autoprefixer:all',
 		'concat',
 		'copy',
-		'replaceScripts'
+		'replaceScripts',
+		'cssmin',
+		'uglify',
+		'htmlmin'
 	]);
 };
