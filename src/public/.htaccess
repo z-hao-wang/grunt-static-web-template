@@ -1,0 +1,8 @@
+# Support gzip files
+# index.html will redirect to index.html.gz
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP:Accept-Encoding} gzip
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}.gz -f
+  RewriteRule (.*\.(html|js|css|json))$ $1.gz [L]
+</IfModule>

@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 				dest: 'build/compressed.js'
 			}
 		},
+		//Copy first, then
 		copy: {
 			build: {
 				files: [
@@ -28,6 +29,7 @@ module.exports = function(grunt) {
 						src: "src/index.html",
 						dest: "build/index.html"
 					},
+					// Static json file as a placeholder
 					{
 						src: "src/data.json",
 						dest: "build/data.json"
@@ -43,6 +45,10 @@ module.exports = function(grunt) {
 						cwd: 'src/imgs/',
 						src: ['**'],
 						dest: 'build/imgs/'
+					},
+					{
+						src: "public/.htaccess",
+						dest: "build/.htaccess"
 					}
 				]
 			}
@@ -124,6 +130,31 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		// Requires Apache rewrite rule. see .htaccess
+		compress: {
+			build: {
+				options: {
+					mode: 'gzip'
+				},
+				files: [
+					{
+						src: "build/index.html",
+						dest: "build/index.html.gz"
+					},
+					{
+						src: "build/compressed.js",
+						dest: "build/compressed.js.gz"
+					},
+					{
+						expand: true,
+						cwd: 'build/css/',
+						src: ['**'],
+						dest: 'build/css/',
+						ext: '.css.gz'
+					}
+				]
+			}
+		},
 		watch: {
 			options: {
 				dateFormat: function (time) {
@@ -157,6 +188,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 
 	// Default task.
 	grunt.registerTask('build', [
@@ -168,7 +200,8 @@ module.exports = function(grunt) {
 		'replaceScripts',
 		'cssmin',
 		'uglify',
-		'htmlmin'
+		'htmlmin',
+		'compress'
 	]);
 
 	// grunt update dev files. just like grunt watch, but manually update
