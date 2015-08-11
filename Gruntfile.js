@@ -130,7 +130,15 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		// Requires Apache rewrite rule. see .htaccess
+		/*
+		 Requires Apache rewrite rule.
+		<IfModule mod_rewrite.c>
+			RewriteEngine On
+			RewriteCond %{HTTP:Accept-Encoding} gzip
+			RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME}.gz -f
+			RewriteRule (.*\.(html|js|css|json))$ $1.gz [L]
+		</IfModule>
+		*/
 		compress: {
 			build: {
 				options: {
