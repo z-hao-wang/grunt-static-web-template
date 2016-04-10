@@ -19,5 +19,5 @@ grunt watch
 npm start
 ```
 
-open (http://localhost:9000/src/)
+open [http://localhost:9000/src/](http://localhost:9000/src/)
 
