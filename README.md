@@ -16,6 +16,8 @@ git clone
 npm install
 grunt build
 grunt watch
+npm start
 ```
-run http://localhost/index.html
+
+open (http://localhost:9000/src/)
 
